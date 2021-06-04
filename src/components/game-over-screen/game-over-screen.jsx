@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GameOver() {
+function GameOverScreen() {
   return (
     <section className="result">
       <div className="result__logo">
@@ -18,4 +18,4 @@ function GameOver() {
   );
 }
 
-export default GameOver;
+export default GameOverScreen;
