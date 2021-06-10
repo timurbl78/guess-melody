@@ -11,6 +11,7 @@ import GenreQuestionScreen from '../genre-question-screen/genre-question-screen'
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import artistQuestionProp from '../artist-question-screen/artist-question.prop';
 import genreQuestionProp from '../genre-question-screen/genre-question.prop';
+import GameScreen from '../game-screen/game-screen';
 
 function App(props) {
   const {errorsCount, questions} = props;
@@ -30,6 +31,12 @@ function App(props) {
         </Route>
         <Route exact path={AppRoute.LOGIN}>
           <AuthScreen />
+        </Route>
+        <Route exact path={AppRoute.GAME}>
+          <GameScreen
+            errorsCount={errorsCount}
+            questions={questions}
+          />
         </Route>
         <Route exact path={AppRoute.DEV_ARTIST}>
           <ArtistQuestionScreen
