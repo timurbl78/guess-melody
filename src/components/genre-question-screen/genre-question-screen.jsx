@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Logo from '../logo/logo';
 import genreQuestionProp from './genre-question.prop';
-import AudioPlayer from '../audio-player/audio-player';
 
 function GenreQuestionScreen(props) {
   const [userAnswers, setUserAnswers] = useState([false, false, false, false]);
-  const {question, onAnswer} = props;
+  const {question, onAnswer, renderPlayer} = props;
   const {genre, answers} = question;
 
   return (
@@ -40,10 +39,7 @@ function GenreQuestionScreen(props) {
             const keyValue = `${id}-${answer.src}`;
             return (
               <div key={keyValue} className="track">
-                <AudioPlayer
-                  autoPlay={id === 0}
-                  src={answer.src}
-                />
+                {renderPlayer(answer.src, id)}
                 <div className="game__answer">
                   <input className="game__input visually-hidden" type="checkbox" name="answer"
                     value={`answer-${id}`}
@@ -69,6 +65,7 @@ function GenreQuestionScreen(props) {
 GenreQuestionScreen.propTypes = {
   question: genreQuestionProp,
   onAnswer: PropTypes.func.isRequired,
+  renderPlayer: PropTypes.func.isRequired,
 };
 
 export default GenreQuestionScreen;

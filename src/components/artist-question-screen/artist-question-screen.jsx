@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Logo from '../logo/logo';
 import artistQuestionProp from './artist-question.prop';
-import AudioPlayer from '../audio-player/audio-player';
 
 function ArtistQuestionScreen(props) {
-  const {onAnswer, question} = props;
+  const {onAnswer, question, renderPlayer} = props;
   const {answers, song} = question;
 
   return (
@@ -30,10 +29,7 @@ function ArtistQuestionScreen(props) {
         <h2 className="game__title">Кто исполняет эту песню?</h2>
         <div className="game__track">
           <div className="track">
-            <AudioPlayer
-              autoPlay
-              src={song.src}
-            />
+            {renderPlayer(song.src, 0)}
           </div>
         </div>
 
@@ -63,6 +59,7 @@ function ArtistQuestionScreen(props) {
 ArtistQuestionScreen.propTypes = {
   onAnswer: PropTypes.func.isRequired,
   question: artistQuestionProp,
+  renderPlayer: PropTypes.func.isRequired,
 };
 
 export default ArtistQuestionScreen;
