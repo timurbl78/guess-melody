@@ -6,8 +6,6 @@ import WelcomeScreen from '../welcome-screen/welcome-screen';
 import GameOverScreen from '../game-over-screen/game-over-screen';
 import AuthScreen from '../auth-screen/auth-screen';
 import WinScreen from '../win-screen/win-screen';
-import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
-import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import artistQuestionProp from '../artist-question-screen/artist-question.prop';
 import genreQuestionProp from '../genre-question-screen/genre-question.prop';
@@ -15,7 +13,6 @@ import GameScreen from '../game-screen/game-screen';
 
 function App(props) {
   const {errorsCount, questions} = props;
-  const [firstQuestion, secondQuestion] = questions;
 
   return (
     <BrowserRouter>
@@ -36,18 +33,6 @@ function App(props) {
           <GameScreen
             errorsCount={errorsCount}
             questions={questions}
-          />
-        </Route>
-        <Route exact path={AppRoute.DEV_ARTIST}>
-          <ArtistQuestionScreen
-            onAnswer={() => {}}
-            question={secondQuestion}
-          />
-        </Route>
-        <Route exact path={AppRoute.DEV_GENRE}>
-          <GenreQuestionScreen
-            onAnswer={() => {}}
-            question={firstQuestion}
           />
         </Route>
         <Route>
